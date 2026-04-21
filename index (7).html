@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Marcus Albright – Georgia Mortgage Options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#08192e;--g:#00b96b;--g2:#009558;--gbg:rgba(0,185,107,.11);
+  --c:#17c3d4;--am:#f5a623;--white:#fff;--tx:#ddeaf8;
+  --mu:#7a9ab8;--mu2:#a8c0d6;--card:rgba(255,255,255,.06);--bdr:rgba(255,255,255,.12);
+  --fh:'Cormorant Garamond',serif;--fb:'IBM Plex Sans',sans-serif;
+}
+html,body{height:100%;background:#04111f}
+#app{font-family:var(--fb);background:var(--bg);min-height:100vh;max-width:520px;margin:0 auto;color:var(--tx);display:flex;flex-direction:column;position:relative;box-shadow:0 0 60px rgba(0,0,0,.6)}
+.hdr{background:rgba(8,25,46,.98);border-bottom:1px solid var(--bdr);padding:9px 16px;display:flex;align-items:center;justify-content:space-between;gap:8px;flex-shrink:0;position:sticky;top:0;z-index:100}
+.hdr-l{display:flex;align-items:center;gap:9px}
+.eho{display:flex;align-items:center;gap:4px;background:var(--gbg);border:1px solid rgba(0,185,107,.3);border-radius:6px;padding:3px 7px;flex-shrink:0}
+.eho svg{width:17px;height:17px}
+.eho-t{font-size:8px;color:var(--g);font-weight:700;line-height:1.25;letter-spacing:.2px}
+.brand{font-family:var(--fh);font-size:15px;font-weight:600;color:#fff;line-height:1}
+.nline{font-size:8.5px;color:var(--mu);margin-top:1px}
+.hdr-r{font-size:8px;color:var(--mu);text-align:right;line-height:1.6}
+.hdr-r a{color:var(--c);text-decoration:none}
+.prog{padding:7px 16px 0;flex-shrink:0;display:none}
+.ptrack{height:8px;background:rgba(255,255,255,.09);border-radius:99px;overflow:hidden}
+.pbar{height:100%;background:linear-gradient(90deg,var(--g),var(--c));border-radius:99px;transition:width .4s cubic-bezier(.4,0,.2,1)}
+.pmeta{display:flex;justify-content:space-between;margin-top:4px;font-size:9.5px}
+.plbl{color:var(--mu)}.ppct{color:var(--g);font-weight:600}
+.back-btn{display:none;align-items:center;gap:4px;background:none;border:none;color:var(--mu);font-family:var(--fb);font-size:12px;cursor:pointer;padding:6px 16px 0;z-index:10}
+.back-btn:hover{color:#fff}
+.back-btn svg{width:14px;height:14px}
+.pbadge{display:inline-flex;align-items:center;gap:5px;background:var(--gbg);border:1px solid rgba(0,185,107,.3);border-radius:99px;padding:3px 11px;font-size:10px;font-weight:600;color:var(--g);margin-bottom:8px}
+.screens{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.scr{display:none;flex-direction:column;align-items:center;padding:20px 16px 80px;min-height:60vh;text-align:center;animation:fu .28s ease both}
+.scr.on{display:flex}
+@keyframes fu{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.q{font-family:var(--fh);font-size:clamp(20px,4vw,27px);font-weight:600;color:#fff;line-height:1.25;max-width:460px;margin-bottom:6px;margin-top:8px}
+.sub{font-size:13px;color:#d1d5db;line-height:1.55;max-width:400px;margin-bottom:16px}
+.hint{font-size:11px;color:var(--am);margin-bottom:12px;display:flex;align-items:center;gap:4px;justify-content:center}
+.disc{font-size:9.5px;color:#94a3b8;line-height:1.6;max-width:440px;margin-top:8px;padding:6px 9px;background:rgba(0,0,0,.2);border-left:2px solid rgba(0,185,107,.28);border-radius:0 4px 4px 0;text-align:left}
+.disc a{color:var(--c);text-decoration:none}
+.grid{display:grid;gap:8px;width:100%;max-width:460px}
+.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:1fr 1fr 1fr}
+.btn{background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.2);border-radius:12px;color:#fff;font-family:var(--fb);font-size:13px;font-weight:600;padding:14px 10px;cursor:pointer;transition:all .22s cubic-bezier(.4,0,.2,1);display:flex;flex-direction:column;align-items:center;gap:6px;line-height:1.3;text-align:center;min-height:64px;justify-content:center;-webkit-tap-highlight-color:transparent;box-shadow:0 2px 8px rgba(0,0,0,.18)}
+.btn:hover{background:rgba(0,185,107,.22);border-color:var(--g);box-shadow:0 4px 16px rgba(0,185,107,.18);transform:translateY(-1px)}
+.btn:active{transform:scale(.97);box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.btn.sel{background:var(--g);border-color:var(--g);color:#fff;box-shadow:0 4px 14px rgba(0,185,107,.3)}
+.btn.full{grid-column:span 2}
+.btn-ico{font-size:20px;line-height:1}
+.yn{flex-direction:row!important;justify-content:center!important;gap:12px!important;padding:15px!important;min-height:56px!important}
+.ck{width:24px;height:24px;border-radius:50%;background:rgba(0,185,107,.15);border:2px solid var(--g);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.cx{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.07);border:2px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ck svg,.cx svg{width:12px;height:12px}
+.cr-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;width:100%;max-width:460px}
+.cr-btn{background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.18);border-radius:12px;color:#fff;font-family:var(--fb);cursor:pointer;transition:all .18s;padding:14px 10px;display:flex;flex-direction:column;align-items:center;gap:4px;-webkit-tap-highlight-color:transparent}
+.cr-btn:hover{background:rgba(0,185,107,.2);border-color:var(--g);transform:translateY(-1px)}
+.cr-btn.sel{background:var(--g);border-color:var(--g)}
+.cr-range{font-size:14px;font-weight:700;color:#fff}
+.cr-label{font-size:10.5px;color:rgba(255,255,255,.75)}
+.iw{width:100%;max-width:420px;margin-bottom:8px;position:relative}
+.iw input,.iw textarea{width:100%;background:#fff;border:1.5px solid #d1d5db;border-radius:10px;color:#111;font-family:var(--fb);font-size:15px;padding:13px 14px;outline:none;transition:border .18s,box-shadow .18s;-webkit-appearance:none;font-weight:500}
+.iw input:focus{border-color:var(--g);box-shadow:0 0 0 3px rgba(0,185,107,.15)}
+.iw input::placeholder{color:#9ca3af;font-weight:400}
+.iw.ic input{padding-left:42px}
+.iw .ii{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:15px;color:var(--g);pointer-events:none;z-index:2}
+.vbadge{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:var(--g);color:#fff;border-radius:99px;font-size:9px;font-weight:700;padding:2px 7px;display:none;pointer-events:none}
+.iw.vrf .vbadge{display:block}
+.iw.vrf input{border-color:var(--g);background:#f0fdf4}
+.iw.err input{border-color:#ef4444;background:#fff5f5}
+.errmsg{font-size:10.5px;color:#ef4444;text-align:left;margin-top:3px;padding-left:2px;display:none}
+.iw.err .errmsg{display:block}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px;width:100%;max-width:420px;margin-bottom:8px}
+.row2 .iw{margin-bottom:0}
+.sw{width:100%;max-width:430px;margin-bottom:12px}
+.sv{font-family:var(--fh);font-size:28px;font-weight:600;color:var(--c);margin-bottom:10px}
+input[type=range]{width:100%;accent-color:var(--g);cursor:pointer}
+.sl{display:flex;justify-content:space-between;font-size:10.5px;color:#94a3b8;margin-top:4px}
+.dp-calc{background:rgba(0,185,107,.08);border:1.5px solid rgba(0,185,107,.28);border-radius:11px;padding:14px 16px;width:100%;max-width:420px;margin:8px 0;text-align:center}
+.dp-calc-label{font-size:11px;color:var(--mu);margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
+.dp-calc-amount{font-family:var(--fh);font-size:32px;font-weight:700;color:var(--g)}
+.dp-calc-sub{font-size:10.5px;color:var(--mu);margin-top:3px}
+.cta{background:var(--g);border:none;border-radius:10px;color:#fff;cursor:pointer;font-family:var(--fb);font-size:14px;font-weight:700;padding:14px 0;width:100%;max-width:420px;transition:background .15s,transform .1s;margin-top:7px;display:flex;align-items:center;justify-content:center;text-decoration:none;gap:7px;letter-spacing:.2px;-webkit-tap-highlight-color:transparent}
+.cta:hover{background:var(--g2)}.cta:active{transform:scale(.98)}
+.cta-outline{background:transparent;border:1.5px solid var(--g);border-radius:10px;color:var(--g);cursor:pointer;font-family:var(--fb);font-size:13.5px;font-weight:600;padding:12px 0;width:100%;max-width:420px;transition:all .15s;margin-top:7px;display:flex;align-items:center;justify-content:center;text-decoration:none;gap:6px}
+.cta-outline:hover{background:var(--gbg)}
+.cta-phone{background:var(--c);border:none;border-radius:10px;color:#fff;cursor:pointer;font-family:var(--fb);font-size:14px;font-weight:700;padding:14px 0;width:100%;max-width:420px;transition:background .15s;margin-top:7px;display:flex;align-items:center;justify-content:center;text-decoration:none;gap:7px}
+.cta-phone:hover{background:#13a8ba}
+.cta-ghost{background:rgba(255,255,255,.07);border:1.5px solid rgba(255,255,255,.14);border-radius:10px;color:#d1d5db;cursor:pointer;font-family:var(--fb);font-size:12.5px;padding:10px 0;width:100%;max-width:420px;transition:all .15s;margin-top:5px;display:flex;align-items:center;justify-content:center;text-decoration:none}
+.cta-ghost:hover{background:rgba(255,255,255,.11);color:#fff}
+.consent-box{background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.1);border-radius:9px;padding:11px 13px;margin-top:10px;width:100%;max-width:420px;text-align:left}
+.consent-row{display:flex;align-items:flex-start;gap:10px}
+.consent-row input[type=checkbox]{width:16px;height:16px;accent-color:var(--g);flex-shrink:0;margin-top:2px;cursor:pointer}
+.consent-txt{font-size:10px;color:#d1d5db;line-height:1.65}
+.consent-txt strong{color:#fff}
+.consent-txt a{color:var(--c);text-decoration:none}
+.consent-warn{font-size:10px;color:var(--am);display:none;margin-top:5px;padding:4px 8px;background:rgba(245,166,35,.1);border-radius:4px}
+.trust{display:flex;gap:12px;margin-top:10px;flex-wrap:wrap;justify-content:center}
+.ti{font-size:10px;color:#d1d5db;display:flex;align-items:center;gap:3px}
+.results-wrap{width:100%;max-width:460px;display:flex;flex-direction:column;gap:12px;margin-bottom:10px}
+.results-left{background:rgba(255,255,255,.04);border:1px solid var(--bdr);border-radius:12px;padding:16px}
+.results-right{background:linear-gradient(135deg,rgba(0,185,107,.1),rgba(23,195,212,.08));border:1.5px solid rgba(0,185,107,.3);border-radius:12px;padding:16px;text-align:center}
+.results-section-title{font-size:10px;font-weight:700;color:var(--g);text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px}
+.program-item{margin-bottom:9px;padding-bottom:9px;border-bottom:1px solid rgba(255,255,255,.07);text-align:left}
+.program-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.program-name{font-size:12.5px;font-weight:700;color:#fff;margin-bottom:2px}
+.program-desc{font-size:10.5px;color:#d1d5db;line-height:1.5}
+.marcus-name{font-family:var(--fh);font-size:18px;font-weight:700;color:#fff;margin-bottom:2px}
+.marcus-title{font-size:10px;color:var(--mu);margin-bottom:10px;line-height:1.5}
+.lender-badge{background:rgba(0,185,107,.15);border:1px solid rgba(0,185,107,.3);border-radius:8px;padding:8px 10px;font-size:11px;color:#fff;font-weight:600;margin-bottom:12px;line-height:1.5}
+.lender-num{font-family:var(--fh);font-size:24px;font-weight:700;color:var(--g);display:block}
+.star-row{color:var(--am);font-size:13px;letter-spacing:1px;margin-bottom:6px}
+.marcus-exp{font-size:10px;color:var(--mu);line-height:1.5}
+.review-card{background:rgba(23,195,212,.07);border:1.5px solid rgba(23,195,212,.3);border-radius:12px;padding:20px 18px;width:100%;max-width:460px;text-align:left;margin-bottom:12px}
+.review-icon{font-size:28px;margin-bottom:8px;text-align:center;display:block}
+.review-title{font-family:var(--fh);font-size:20px;font-weight:600;color:#fff;margin-bottom:10px;text-align:center;line-height:1.3}
+.review-body{font-size:12px;color:#d1d5db;line-height:1.7}
+.review-body p{margin-bottom:8px}
+.cta-group{width:100%;max-width:420px;display:flex;flex-direction:column;gap:0}
+.rate-note{font-size:9.5px;color:#94a3b8;line-height:1.6;max-width:460px;text-align:left;margin-top:6px;padding:7px 10px;background:rgba(0,0,0,.2);border-radius:5px;border-left:2px solid var(--am)}
+.confirm-card{background:rgba(255,255,255,.05);border:1px solid var(--bdr);border-radius:11px;padding:14px 16px;width:100%;max-width:420px;margin-bottom:8px;text-align:left}
+.confirm-label{font-size:10px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.confirm-val{font-size:14px;font-weight:600;color:#fff}
+.hp-field{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden;pointer-events:none;tab-index:-1}
+.ftr{background:rgba(0,0,0,.4);border-top:1px solid rgba(255,255,255,.07);padding:10px 15px;font-size:8.5px;color:rgba(255,255,255,.28);line-height:1.75;text-align:center;flex-shrink:0}
+.ftr a{color:rgba(23,195,212,.55);text-decoration:none}
+.ftr strong{color:rgba(255,255,255,.45)}
+</style>
+</head>
+<body>
+<div id="app">
+
+<div class="hdr">
+  <div class="hdr-l">
+    <div class="eho" aria-label="Equal Housing Lender">
+      <svg viewBox="0 0 22 22" fill="none"><path d="M11 2L2 9.5h19L11 2z" stroke="#00b96b" stroke-width="1.6" stroke-linejoin="round"/><rect x="4" y="9.5" width="14" height="10" rx="1.2" stroke="#00b96b" stroke-width="1.6"/><line x1="6.5" y1="14" x2="15.5" y2="14" stroke="#00b96b" stroke-width="1.5"/><line x1="11" y1="11" x2="11" y2="19.5" stroke="#00b96b" stroke-width="1.5"/></svg>
+      <div class="eho-t">Equal<br>Housing<br>Lender</div>
+    </div>
+    <div>
+      <div class="brand">The Loan Factory</div>
+      <div class="nline">Marcus Albright · NMLS #1503465 · Company NMLS #320841</div>
+    </div>
+  </div>
+  <div class="hdr-r">GA · <a href="https://dbf.georgia.gov" target="_blank">DBF ↗</a><br><a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/1503465" target="_blank">NMLS ↗</a></div>
+</div>
+
+<div class="prog" id="prog"><div class="ptrack"><div class="pbar" id="pbar" style="width:5%"></div></div><div class="pmeta"><span class="plbl" id="plbl">Step 1</span><span class="ppct" id="ppct">5%</span></div></div>
+<button class="back-btn" id="backBtn" onclick="goBack()"><svg viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Back</button>
+
+<div class="screens">
+
+<!-- ENTRY -->
+<div class="scr on" id="s_entry">
+  <div class="q" style="font-size:clamp(20px,4.5vw,30px);margin-top:16px">See what you may qualify for in 60 seconds —<br>no credit impact to start</div>
+  <div class="sub" style="margin-bottom:20px">Takes under 60 seconds. We'll review your info and follow up with your options.</div>
+  <div class="grid" style="max-width:380px">
+    <button class="btn full" style="min-height:80px;padding:18px;border-radius:14px" onclick="startPath('purchase')"><div class="btn-ico">🏠</div><div><div style="font-size:14px;font-weight:700">Purchase a Home</div><div style="font-size:10.5px;opacity:.75;margin-top:2px">Buy · Pre-approve · New construction</div><div style="font-size:10px;opacity:.6;margin-top:4px;font-weight:400">Start with a quick review of your homebuying options</div></div></button>
+    <button class="btn full" style="min-height:80px;padding:18px;border-radius:14px" onclick="startPath('refi')"><div class="btn-ico">🔄</div><div><div style="font-size:14px;font-weight:700">Refinance</div><div style="font-size:10.5px;opacity:.75;margin-top:2px">Lower rate · Cash-out · Shorten term</div><div style="font-size:10px;opacity:.6;margin-top:4px;font-weight:400">Review payment, equity, or cash-out possibilities</div></div></button>
+    <button class="btn full" style="min-height:80px;padding:18px;border-radius:14px" onclick="startPath('invest')"><div class="btn-ico">📈</div><div><div style="font-size:14px;font-weight:700">Investment Property</div><div style="font-size:10.5px;opacity:.75;margin-top:2px">DSCR · Fix &amp; Flip · Portfolio · Bridge</div><div style="font-size:10px;opacity:.6;margin-top:4px;font-weight:400">Explore rental and investor-focused loan scenarios</div></div></button>
+  </div>
+  <div class="disc" style="max-width:380px;margin-top:16px">Not a commitment to lend. Subject to lender approval. Based on standard federal and state guidelines.</div>
+</div>
+
+<!-- PURCHASE PATH -->
+<div class="scr" id="p1"><div class="pbadge">🏠 Purchase</div><div class="q">When are you looking to purchase?</div><div class="grid" style="max-width:380px"><button class="btn full" onclick="pset('timeline','contract');go('p2')">Already under contract</button><button class="btn full" onclick="pset('timeline','immediate');go('p2')">Immediately — making an offer</button><button class="btn full" onclick="pset('timeline','1_2mo');go('p2')">Within 1–2 months</button><button class="btn full" onclick="pset('timeline','3_6mo');go('p2')">3–6 months out</button><button class="btn full" onclick="pset('timeline','research');go('p2')">Just researching</button></div><div class="hint">⚡ Programs and rates change — earlier review = more options</div></div>
+
+<div class="scr" id="p2"><div class="pbadge">🏠 Purchase</div><div class="q">What type of property?</div><div class="grid g2" style="max-width:380px"><button class="btn" onclick="pset('propType','sfr');go('p3')"><div class="btn-ico">🏡</div>Single Family</button><button class="btn" onclick="pset('propType','townhome');go('p3')"><div class="btn-ico">🏘️</div>Townhome</button><button class="btn" onclick="pset('propType','condo');go('p3')"><div class="btn-ico">🏢</div>Condo</button><button class="btn" onclick="pset('propType','multi');go('p3')"><div class="btn-ico">🏗️</div>Multi-Family</button><button class="btn" onclick="pset('propType','mfg');go('p3')"><div class="btn-ico">🚐</div>Manufactured</button><button class="btn" onclick="pset('propType','new');go('p3')"><div class="btn-ico">🔑</div>New Construction</button></div></div>
+
+<div class="scr" id="p3"><div class="pbadge">🏠 Purchase</div><div class="q">How will you use this property?</div><div class="grid" style="max-width:340px"><button class="btn full" onclick="pset('occupancy','primary');go('p4')"><div class="btn-ico">📬</div>Primary Residence</button><button class="btn full" onclick="pset('occupancy','secondary');go('p4')"><div class="btn-ico">🌴</div>Secondary / Vacation Home</button><button class="btn full" onclick="pset('occupancy','rental');go('p4')"><div class="btn-ico">🏷️</div>Rental / Investment</button></div><div class="disc">We do not discriminate based on race, color, religion, national origin, sex, disability, familial status, or any other protected class per the Fair Housing Act.</div></div>
+
+<div class="scr" id="p4"><div class="pbadge">🏠 Purchase</div><div class="q">Estimated purchase price?</div><div class="sw"><div class="sv" id="p-price-val">$250,000</div><input type="range" id="p-price-sl" min="0" max="14" step="1" value="4" oninput="updatePurchasePrice(this.value)"/><div class="sl"><span>$50K</span><span>$2M+</span></div></div><button class="cta" onclick="go('p5')">Continue</button><div class="disc">Estimate is fine — this helps identify programs in your range. Subject to conforming loan limits and program guidelines.</div></div>
+
+<div class="scr" id="p5"><div class="pbadge">🏠 Purchase</div><div class="q">Estimated down payment?</div><div class="sw"><div class="sv" id="p-dp-val">10–15%</div><input type="range" id="p-dp-sl" min="0" max="9" step="1" value="3" oninput="updateDP(this.value)"/><div class="sl"><span>0%</span><span>50%+</span></div></div><button class="cta" onclick="go('p6')">Continue</button><div class="disc">Many programs offer low or no down payment options for qualifying borrowers. Subject to lender approval.</div></div>
+
+<div class="scr" id="p6"><div class="pbadge">🏠 Purchase</div><div class="q">Approximate credit score range?</div><div class="sub">Helps Marcus identify the best programs for your scenario.</div><div class="cr-grid"><button class="cr-btn" onclick="pset('credit','r1');go('p7')"><div class="cr-range">500–580</div><div class="cr-label">Building</div></button><button class="cr-btn" onclick="pset('credit','r2');go('p7')"><div class="cr-range">580–640</div><div class="cr-label">Fair</div></button><button class="cr-btn" onclick="pset('credit','r3');go('p7')"><div class="cr-range">640–680</div><div class="cr-label">Good</div></button><button class="cr-btn" onclick="pset('credit','r4');go('p7')"><div class="cr-range">680–720</div><div class="cr-label">Very Good</div></button><button class="cr-btn" style="grid-column:span 2" onclick="pset('credit','r5');go('p7')"><div class="cr-range">720+</div><div class="cr-label">Excellent</div></button></div></div>
+
+<div class="scr" id="p7"><div class="pbadge">🏠 Purchase</div><div class="q">Have you identified a property?</div><div class="grid g2" style="max-width:300px"><button class="btn yn" onclick="pset('propFound',true);showAddr(true)"><div class="ck"><svg viewBox="0 0 13 13"><polyline points="2,6.5 5.5,10 11,3" stroke="#00b96b" stroke-width="2.2" fill="none"/></svg></div>Yes</button><button class="btn yn" onclick="pset('propFound',false);showAddr(false)"><div class="cx"><svg viewBox="0 0 13 13"><line x1="3" y1="3" x2="10" y2="10" stroke="#7a9ab8" stroke-width="2"/><line x1="10" y1="3" x2="3" y2="10" stroke="#7a9ab8" stroke-width="2"/></svg></div>Not Yet</button></div><div id="addr-field" style="display:none;width:100%;max-width:420px;margin-top:14px"><div class="iw"><input type="text" id="prop-addr" placeholder="Property address (optional)" oninput="pset('propAddress',this.value)"/></div><button class="cta" onclick="go('p_lead')">Continue</button></div></div>
+
+<!-- REFI PATH -->
+<div class="scr" id="r1"><div class="pbadge">🔄 Refinance</div><div class="q">What's your refinance timeline?</div><div class="grid" style="max-width:380px"><button class="btn full" onclick="rset('timeline','asap');go('r2')">As soon as possible</button><button class="btn full" onclick="rset('timeline','1_2mo');go('r2')">Within 1–2 months</button><button class="btn full" onclick="rset('timeline','3_6mo');go('r2')">3–6 months out</button><button class="btn full" onclick="rset('timeline','research');go('r2')">Just exploring options</button></div></div>
+
+<div class="scr" id="r2"><div class="pbadge">🔄 Refinance</div><div class="q">Tell us about your current loan</div><div class="sub">The more you share, the better we can prepare your options.</div><div class="iw"><input type="text" placeholder="Property address (optional)" oninput="rset('address',this.value)"/></div><div class="row2"><div class="iw"><input type="text" placeholder="Est. home value ($)" oninput="rset('homeVal',this.value)"/></div><div class="iw"><input type="text" placeholder="Loan balance ($)" oninput="rset('balance',this.value)"/></div></div><div class="row2"><div class="iw"><input type="text" placeholder="Current rate (%)" oninput="rset('rate',this.value)"/></div><div class="iw"><input type="text" placeholder="Years remaining" oninput="rset('years',this.value)"/></div></div><div class="q" style="font-size:15px;margin-top:4px;margin-bottom:8px">What's your goal?</div><div class="grid g2" style="max-width:380px;margin-bottom:8px"><button class="btn" id="rg-lower" onclick="rset('goal','lower');selGoal('rg-lower')"><div class="btn-ico">📉</div>Lower Payment</button><button class="btn" id="rg-cash" onclick="rset('goal','cashout');selGoal('rg-cash')"><div class="btn-ico">💵</div>Cash Out</button><button class="btn" id="rg-short" onclick="rset('goal','shorten');selGoal('rg-short')"><div class="btn-ico">⏱️</div>Shorten Term</button><button class="btn" id="rg-ns" onclick="rset('goal','notsure');selGoal('rg-ns')"><div class="btn-ico">❓</div>Not Sure</button></div><button class="cta" onclick="go('r3')">Continue</button><div class="disc">All fields optional. Not a commitment to lend.</div></div>
+
+<div class="scr" id="r3"><div class="pbadge">🔄 Refinance</div><div class="q">Approximate credit score range?</div><div class="sub">Helps Marcus identify the right refi programs.</div><div class="cr-grid"><button class="cr-btn" onclick="rset('credit','r1');go('r_lead')"><div class="cr-range">500–580</div><div class="cr-label">Building</div></button><button class="cr-btn" onclick="rset('credit','r2');go('r_lead')"><div class="cr-range">580–640</div><div class="cr-label">Fair</div></button><button class="cr-btn" onclick="rset('credit','r3');go('r_lead')"><div class="cr-range">640–680</div><div class="cr-label">Good</div></button><button class="cr-btn" onclick="rset('credit','r4');go('r_lead')"><div class="cr-range">680–720</div><div class="cr-label">Very Good</div></button><button class="cr-btn" style="grid-column:span 2" onclick="rset('credit','r5');go('r_lead')"><div class="cr-range">720+</div><div class="cr-label">Excellent</div></button></div></div>
+
+<!-- INVEST PATH -->
+<div class="scr" id="i1"><div class="pbadge">📈 Investment</div><div class="q">What type of investment?</div><div class="grid" style="max-width:380px"><button class="btn full" onclick="iset('type','buy_hold');go('i2')"><div class="btn-ico">🏘️</div>Buy &amp; Hold</button><button class="btn full" onclick="iset('type','fix_flip');go('i2')"><div class="btn-ico">🔨</div>Fix &amp; Flip</button><button class="btn full" onclick="iset('type','refi_invest');go('i2')"><div class="btn-ico">🔄</div>Refinance Investment</button><button class="btn full" onclick="iset('type','notsure');go('i2')"><div class="btn-ico">❓</div>Not Sure</button></div></div>
+
+<div class="scr" id="i2"><div class="pbadge">📈 Investment</div><div class="q">What's your investment timeline?</div><div class="grid" style="max-width:380px"><button class="btn full" onclick="iset('timeline','ready');go('i3')">Ready to move now</button><button class="btn full" onclick="iset('timeline','1_2mo');go('i3')">Within 1–2 months</button><button class="btn full" onclick="iset('timeline','3_6mo');go('i3')">3–6 months out</button><button class="btn full" onclick="iset('timeline','research');go('i3')">Just researching</button></div></div>
+
+<div class="scr" id="i3"><div class="pbadge">📈 Investment</div><div class="q">Approximate credit score range?</div><div class="sub">Helps Marcus match you with the right investment programs.</div><div class="cr-grid"><button class="cr-btn" onclick="iset('credit','r1');go('i4')"><div class="cr-range">500–580</div><div class="cr-label">Building</div></button><button class="cr-btn" onclick="iset('credit','r2');go('i4')"><div class="cr-range">580–640</div><div class="cr-label">Fair</div></button><button class="cr-btn" onclick="iset('credit','r3');go('i4')"><div class="cr-range">640–680</div><div class="cr-label">Good</div></button><button class="cr-btn" onclick="iset('credit','r4');go('i4')"><div class="cr-range">680–720</div><div class="cr-label">Very Good</div></button><button class="cr-btn" style="grid-column:span 2" onclick="iset('credit','r5');go('i4')"><div class="cr-range">720+</div><div class="cr-label">Excellent</div></button></div></div>
+
+<div class="scr" id="i4"><div class="pbadge">📈 Investment</div><div class="q">Tell us about your scenario</div><div class="iw"><input type="text" placeholder="Property address (optional)" oninput="iset('address',this.value)"/></div><div class="iw ic"><span class="ii">$</span><input type="text" id="invest-price" placeholder="Purchase price or loan size" inputmode="numeric" oninput="iset('price',this.value);updateInvestDP()"/></div><div class="q" style="font-size:14px;margin-bottom:8px;margin-top:4px">Down payment estimate</div><div class="grid g2" style="max-width:380px;margin-bottom:6px"><button class="btn" id="idp-10" onclick="iset('dpPct',10);selIdp('idp-10');updateInvestDP()">10%</button><button class="btn" id="idp-15" onclick="iset('dpPct',15);selIdp('idp-15');updateInvestDP()">15%</button><button class="btn" id="idp-20" onclick="iset('dpPct',20);selIdp('idp-20');updateInvestDP()">20%</button><button class="btn" id="idp-30" onclick="iset('dpPct',30);selIdp('idp-30');updateInvestDP()">30%+</button></div><div class="dp-calc" id="dp-calc-box" style="display:none"><div class="dp-calc-label">Estimated Down Payment</div><div class="dp-calc-amount" id="dp-calc-amount">$0</div><div class="dp-calc-sub" id="dp-calc-sub">Based on your inputs</div></div><div class="q" style="font-size:14px;margin-bottom:8px;margin-top:12px">Investment experience</div><div class="sub" style="font-size:11.5px;margin-bottom:10px">How many investments have you completed in the last 5 years where you owned at least 25%?</div><div class="grid g2" style="max-width:380px;margin-bottom:8px"><button class="btn" id="iexp-none" onclick="iset('experience','none');selIexp('iexp-none')">None — first time</button><button class="btn" id="iexp-12" onclick="iset('experience','1_2');selIexp('iexp-12')">1–2 properties</button><button class="btn" id="iexp-35" onclick="iset('experience','3_5');selIexp('iexp-35')">3–5 properties</button><button class="btn" id="iexp-5p" onclick="iset('experience','5plus');selIexp('iexp-5p')">5+ properties</button></div><button class="cta" onclick="go('i_lead')">Continue</button></div>
+
+<!-- LEAD CAPTURE — PURCHASE -->
+<div class="scr" id="p_lead">
+  <div class="pbadge">🏠 Purchase</div>
+  <div class="q">Let's connect you with Marcus</div>
+  <div class="sub">Takes 30 seconds. Your info is secure and never sold.</div>
+  <div class="hp-field" aria-hidden="true"><input type="text" name="website_url" tabindex="-1" autocomplete="off" id="hp-p"/></div>
+  <div class="row2">
+    <div class="iw" id="p-fw-fn"><input type="text" id="p-fn" placeholder="First Name" autocomplete="given-name" oninput="valName('p-fn','p-fw-fn','p-err-fn')"/><div class="errmsg" id="p-err-fn">Enter your first name</div></div>
+    <div class="iw" id="p-fw-ln"><input type="text" id="p-ln" placeholder="Last Name" autocomplete="family-name" oninput="valName('p-ln','p-fw-ln','p-err-ln')"/><div class="errmsg" id="p-err-ln">Enter your last name</div></div>
+  </div>
+  <div class="iw ic" id="p-fw-ph"><span class="ii">📞</span><input type="tel" id="p-ph" placeholder="Phone Number" inputmode="numeric" autocomplete="tel" oninput="fmtPhone(this,'p-fw-ph','p-err-ph')"/><div class="vbadge">✓ Valid</div><div class="errmsg" id="p-err-ph">Enter a valid 10-digit phone number</div></div>
+  <div class="iw ic" id="p-fw-em"><span class="ii">✉</span><input type="email" id="p-em" placeholder="Email Address" autocomplete="email" oninput="valEmail('p-em','p-fw-em','p-err-em')"/><div class="vbadge">✓ Valid</div><div class="errmsg" id="p-err-em">Enter a valid email address</div></div>
+  <div class="consent-box"><div class="consent-row"><input type="checkbox" id="p-chk" onchange="hideWarn('p-chk-warn')"/><label class="consent-txt" for="p-chk">I agree to be contacted by <strong>Marcus Albright (NMLS #1503465)</strong> and <strong>The Loan Factory (NMLS #320841)</strong> via phone, text, and email regarding mortgage options. Message &amp; data rates may apply. Consent is not required to obtain a loan. <a href="https://www.loanfactory.com/privacy" target="_blank">Privacy Policy</a></label></div><div class="consent-warn" id="p-chk-warn">⚠ Please agree to continue</div></div>
+  <div class="trust" style="margin-bottom:4px"><div class="ti">🔒 Encrypted</div><div class="ti">✓ No credit pull</div><div class="ti">🛡️ Never sold</div></div>
+  <button class="cta" onclick="submitLead('p')" style="margin-top:6px">Get My Options →</button>
+</div>
+
+<!-- LEAD CAPTURE — REFI -->
+<div class="scr" id="r_lead">
+  <div class="pbadge">🔄 Refinance</div>
+  <div class="q">Let's connect you with Marcus</div>
+  <div class="sub">Takes 30 seconds. Your info is secure and never sold.</div>
+  <div class="hp-field" aria-hidden="true"><input type="text" name="website_url" tabindex="-1" autocomplete="off" id="hp-r"/></div>
+  <div class="row2">
+    <div class="iw" id="r-fw-fn"><input type="text" id="r-fn" placeholder="First Name" autocomplete="given-name" oninput="valName('r-fn','r-fw-fn','r-err-fn')"/><div class="errmsg" id="r-err-fn">Enter your first name</div></div>
+    <div class="iw" id="r-fw-ln"><input type="text" id="r-ln" placeholder="Last Name" autocomplete="family-name" oninput="valName('r-ln','r-fw-ln','r-err-ln')"/><div class="errmsg" id="r-err-ln">Enter your last name</div></div>
+  </div>
+  <div class="iw ic" id="r-fw-ph"><span class="ii">📞</span><input type="tel" id="r-ph" placeholder="Phone Number" inputmode="numeric" autocomplete="tel" oninput="fmtPhone(this,'r-fw-ph','r-err-ph')"/><div class="vbadge">✓ Valid</div><div class="errmsg" id="r-err-ph">Enter a valid 10-digit phone number</div></div>
+  <div class="iw ic" id="r-fw-em"><span class="ii">✉</span><input type="email" id="r-em" placeholder="Email Address" autocomplete="email" oninput="valEmail('r-em','r-fw-em','r-err-em')"/><div class="vbadge">✓ Valid</div><div class="errmsg" id="r-err-em">Enter a valid email address</div></div>
+  <div class="consent-box"><div class="consent-row"><input type="checkbox" id="r-chk" onchange="hideWarn('r-chk-warn')"/><label class="consent-txt" for="r-chk">I agree to be contacted by <strong>Marcus Albright (NMLS #1503465)</strong> and <strong>The Loan Factory (NMLS #320841)</strong> via phone, text, and email regarding mortgage options. Consent is not required to obtain a loan. <a href="https://www.loanfactory.com/privacy" target="_blank">Privacy Policy</a></label></div><div class="consent-warn" id="r-chk-warn">⚠ Please agree to continue</div></div>
+  <div class="trust" style="margin-bottom:4px"><div class="ti">🔒 Encrypted</div><div class="ti">✓ No credit pull</div><div class="ti">🛡️ Never sold</div></div>
+  <button class="cta" onclick="submitLead('r')" style="margin-top:6px">Get My Options →</button>
+</div>
+
+<!-- LEAD CAPTURE — INVEST -->
+<div class="scr" id="i_lead">
+  <div class="pbadge">📈 Investment</div>
+  <div class="q">Let's connect you with Marcus</div>
+  <div class="sub">Takes 30 seconds. Your info is secure and never sold.</div>
+  <div class="hp-field" aria-hidden="true"><input type="text" name="website_url" tabindex="-1" autocomplete="off" id="hp-i"/></div>
+  <div class="row2">
+    <div class="iw" id="i-fw-fn"><input type="text" id="i-fn" placeholder="First Name" autocomplete="given-name" oninput="valName('i-fn','i-fw-fn','i-err-fn')"/><div class="errmsg" id="i-err-fn">Enter your first name</div></div>
+    <div class="iw" id="i-fw-ln"><input type="text" id="i-ln" placeholder="Last Name" autocomplete="family-name" oninput="valName('i-ln','i-fw-ln','i-err-ln')"/><div class="errmsg" id="i-err-ln">Enter your last name</div></div>
+  </div>
+  <div class="iw ic" id="i-fw-ph"><span class="ii">📞</span><input type="tel" id="i-ph" placeholder="Phone Number" inputmode="numeric" autocomplete="tel" oninput="fmtPhone(this,'i-fw-ph','i-err-ph')"/><div class="vbadge">✓ Valid</div><div class="errmsg" id="i-err-ph">Enter a valid 10-digit phone number</div></div>
+  <div class="iw ic" id="i-fw-em"><span class="ii">✉</span><input type="email" id="i-em" placeholder="Email Address" autocomplete="email" oninput="valEmail('i-em','i-fw-em','i-err-em')"/><div class="vbadge">✓ Valid</div><div class="errmsg" id="i-err-em">Enter a valid email address</div></div>
+  <div class="consent-box"><div class="consent-row"><input type="checkbox" id="i-chk" onchange="hideWarn('i-chk-warn')"/><label class="consent-txt" for="i-chk">I agree to be contacted by <strong>Marcus Albright (NMLS #1503465)</strong> and <strong>The Loan Factory (NMLS #320841)</strong> via phone, text, and email regarding mortgage options. Consent is not required to obtain a loan. <a href="https://www.loanfactory.com/privacy" target="_blank">Privacy Policy</a></label></div><div class="consent-warn" id="i-chk-warn">⚠ Please agree to continue</div></div>
+  <div class="trust" style="margin-bottom:4px"><div class="ti">🔒 Encrypted</div><div class="ti">✓ No credit pull</div><div class="ti">🛡️ Never sold</div></div>
+  <button class="cta" onclick="submitLead('i')" style="margin-top:6px">Get My Options →</button>
+</div>
+
+<!-- CONFIRM CONTACT -->
+<div class="scr" id="s_confirm">
+  <div class="pbadge" id="confirm-badge">🏠 Purchase</div>
+  <div class="q">Is this the best way to reach you?</div>
+  <div class="sub">Confirm your contact details before we pull your options.</div>
+  <div class="confirm-card"><div class="confirm-label">Phone</div><div class="confirm-val" id="confirm-phone">—</div></div>
+  <div class="confirm-card"><div class="confirm-label">Email</div><div class="confirm-val" id="confirm-email">—</div></div>
+  <div class="consent-box" style="margin-top:8px">
+    <div class="consent-row"><input type="checkbox" id="final-chk" onchange="hideWarn('final-chk-warn')"/><label class="consent-txt" for="final-chk">By confirming, I provide my <strong>prior express written consent</strong> authorizing <strong>Marcus Albright (NMLS #1503465)</strong> and <strong>The Loan Factory (NMLS #320841)</strong> — and no other parties — to contact me using autodialed calls, pre-recorded messages, and/or SMS/MMS texts regarding mortgage products. <strong>Consent is not a condition of purchase.</strong> Reply STOP to opt out. <a href="https://www.loanfactory.com/privacy" target="_blank">Privacy Policy</a> · <a href="https://www.loanfactory.com/disclosure" target="_blank">Disclosures</a></label></div>
+    <div class="consent-warn" id="final-chk-warn">⚠ Please confirm your consent</div>
+  </div>
+  <button class="cta" onclick="doFinalConfirm()" style="margin-top:10px">Yes, Show My Options →</button>
+  <button class="cta-ghost" onclick="goBackToLead()" style="margin-top:6px">Edit my contact info</button>
+</div>
+
+<!-- RESULTS — PURCHASE -->
+<div class="scr" id="res_purchase">
+  <div class="pbadge">🏠 Your Purchase Options</div>
+  <div class="q" style="font-size:clamp(17px,3vw,22px);margin-bottom:8px">🎉 Your profile is ready, <span id="res-p-name">there</span>!</div>
+  <div class="sub" style="margin-bottom:12px">Marcus will follow up within 1 business day. Programs below are options based on your scenario — not approvals.</div>
+  <div class="results-wrap">
+    <div class="results-left">
+      <div class="results-section-title">⚡ Loan Programs</div>
+      <div class="program-item"><div class="program-name">Conventional — Standard</div><div class="program-desc">Competitive rates for qualified borrowers. Down Payment Assistance may be available. Marcus reviews full eligibility.</div></div>
+      <div class="program-item"><div class="program-name">Conventional — Purchase + Rehab</div><div class="program-desc">Combines purchase and renovation into one loan for primary residence buyers.</div></div>
+      <div class="program-item"><div class="program-name">FHA Standard</div><div class="program-desc">Government-backed with flexible qualification guidelines. MIP applies. Eligibility based on full financial profile.</div></div>
+      <div class="program-item"><div class="program-name">FHA 203k</div><div class="program-desc">Purchase + minor rehab in one FHA-backed loan. Primary residences. MIP applies.</div></div>
+      <div class="program-item" id="p-va-row" style="display:none"><div class="program-name">VA Loan</div><div class="program-desc">For eligible veterans. Marcus works with lenders who follow VA guidelines directly — not bank overlays. COE required. VA funding fee may apply.</div></div>
+      <div class="program-item"><div class="program-name">Non-QM — Bank Statement</div><div class="program-desc">12–24 months of bank statements instead of tax returns. Ideal for self-employed borrowers.</div></div>
+      <div class="program-item"><div class="program-name">Non-QM — 1099 Program</div><div class="program-desc">Qualifies on 1099 income. Designed for contractors and independent earners.</div></div>
+    </div>
+    <div class="results-right"><div class="star-row">★★★★★</div><div class="marcus-name">Marcus Albright</div><div class="marcus-title">Senior Loan Officer<br>30+ Years Experience<br>Atlanta, Georgia</div><div class="lender-badge"><span class="lender-num">240+</span>Wholesale lender connections to find competitive options based on your scenario</div><div class="marcus-exp">NMLS #1503465<br>The Loan Factory<br>NMLS #320841</div></div>
+  </div>
+  <div class="rate-note">⚠ Rates and APR not shown per TILA / Regulation Z. Your rate will be provided in a formal Loan Estimate after a completed application. Programs shown are examples — not a loan approval or commitment to lend. Subject to lender approval.</div>
+  <div class="cta-group"><a class="cta" href="https://www.loanfactory.com/marcusalbright/apply" target="_blank">🚀 Start My Application</a><a class="cta-phone" href="tel:4709435798">📞 Call Marcus — (470) 943-5798</a><a class="cta-outline" href="https://calendly.com/marcus-albright/30min" target="_blank">📅 Book a Consultation</a></div>
+</div>
+
+<!-- RESULTS — REFI -->
+<div class="scr" id="res_refi">
+  <div class="pbadge">🔄 Your Refinance Options</div>
+  <div class="q" style="font-size:clamp(17px,3vw,22px);margin-bottom:8px">🎉 Your refi profile is ready, <span id="res-r-name">there</span>!</div>
+  <div class="sub" style="margin-bottom:12px">Marcus will follow up within 1 business day. Programs are examples based on your scenario — not approvals.</div>
+  <div class="results-wrap">
+    <div class="results-left">
+      <div class="results-section-title">⚡ Refinance Programs</div>
+      <div class="program-item"><div class="program-name">Conventional Refinance</div><div class="program-desc">Rate-and-term or cash-out options. Marcus reviews your current loan and goal.</div></div>
+      <div class="program-item"><div class="program-name">FHA Refinance</div><div class="program-desc">For existing FHA borrowers. Streamline option may simplify the process. MIP applies.</div></div>
+      <div class="program-item" id="r-va-row" style="display:none"><div class="program-name">VA IRRRL</div><div class="program-desc">Interest Rate Reduction Refinance for eligible veterans. VA funding fee may apply.</div></div>
+      <div class="program-item"><div class="program-name">Non-QM Refinance</div><div class="program-desc">Bank statement, 1099, and asset-based options for non-traditional income scenarios.</div></div>
+      <div class="program-item"><div class="program-name">Portfolio Loan</div><div class="program-desc">Held by lender directly. Flexible underwriting for scenarios that don't fit standard guidelines.</div></div>
+    </div>
+    <div class="results-right"><div class="star-row">★★★★★</div><div class="marcus-name">Marcus Albright</div><div class="marcus-title">Senior Loan Officer<br>30+ Years Experience<br>Atlanta, Georgia</div><div class="lender-badge"><span class="lender-num">240+</span>Wholesale lender connections to find competitive options based on your scenario</div><div class="marcus-exp">NMLS #1503465<br>The Loan Factory<br>NMLS #320841</div></div>
+  </div>
+  <div class="rate-note">⚠ Rates and APR not shown per TILA / Regulation Z. Programs shown are examples — not a loan approval or commitment to lend. Subject to lender approval.</div>
+  <div class="cta-group"><a class="cta" href="https://www.loanfactory.com/marcusalbright/apply" target="_blank">🚀 Start My Application</a><a class="cta-phone" href="tel:4709435798">📞 Call Marcus — (470) 943-5798</a><a class="cta-outline" href="https://calendly.com/marcus-albright/30min" target="_blank">📅 Book a Consultation</a></div>
+</div>
+
+<!-- RESULTS — INVEST -->
+<div class="scr" id="res_invest">
+  <div class="pbadge">📈 Your Investment Options</div>
+  <div class="q" style="font-size:clamp(17px,3vw,22px);margin-bottom:8px">🎉 Your investment profile is ready, <span id="res-i-name">there</span>!</div>
+  <div class="sub" style="margin-bottom:12px">Marcus will follow up within 1 business day. Programs are examples based on your scenario — not approvals.</div>
+  <div class="results-wrap">
+    <div class="results-left">
+      <div class="results-section-title">⚡ Investment Programs</div>
+      <div class="program-item"><div class="program-name">DSCR Loan</div><div class="program-desc">Qualifies on rental income the property generates — not your personal income.</div></div>
+      <div class="program-item"><div class="program-name">Bank Statement — 12 Month</div><div class="program-desc">12 months of bank statements to verify income. No tax returns required.</div></div>
+      <div class="program-item"><div class="program-name">Bank Statement — 24 Month</div><div class="program-desc">24-month average for stronger income documentation.</div></div>
+      <div class="program-item"><div class="program-name">1099 Loan — 1 Year</div><div class="program-desc">Qualifies on one year of 1099 income. For contractors and independent earners.</div></div>
+      <div class="program-item"><div class="program-name">Portfolio Loan</div><div class="program-desc">Held directly by lender. Flexible terms for experienced investors and complex scenarios.</div></div>
+      <div class="program-item"><div class="program-name">Hard Money Loan</div><div class="program-desc">Asset-based financing secured by the property. Ideal for fix-and-flip and time-sensitive deals.</div></div>
+    </div>
+    <div class="results-right"><div class="star-row">★★★★★</div><div class="marcus-name">Marcus Albright</div><div class="marcus-title">Senior Loan Officer<br>30+ Years Experience<br>Atlanta, Georgia</div><div class="lender-badge"><span class="lender-num">240+</span>Wholesale lender connections to find competitive options based on your scenario</div><div class="marcus-exp">NMLS #1503465<br>The Loan Factory<br>NMLS #320841</div></div>
+  </div>
+  <div class="rate-note">⚠ Programs shown are examples — not a loan approval or commitment to lend. Subject to lender approval.</div>
+  <div class="cta-group"><a class="cta" href="https://www.loanfactory.com/marcusalbright/apply" target="_blank">🚀 Start My Application</a><a class="cta-phone" href="tel:4709435798">📞 Call Marcus — (470) 943-5798</a><a class="cta-outline" href="https://calendly.com/marcus-albright/30min" target="_blank">📅 Book a Consultation</a></div>
+</div>
+
+<!-- REVIEW REQUIRED — sub-640 -->
+<div class="scr" id="res_review">
+  <div class="pbadge" id="review-badge">🏠 Your Profile</div>
+  <div class="q" style="font-size:clamp(17px,3vw,22px);margin-bottom:10px">Your scenario is ready for review, <span id="res-rev-name">there</span></div>
+  <div class="review-card"><span class="review-icon">🔍</span><div class="review-title">Personalized Review Required</div><div class="review-body"><p>Based on the information provided, your scenario would benefit from a personalized review.</p><p>Every situation is different, and approvals often depend on the full financial picture and compensating factors.</p><p>A short consultation will allow us to review your options and identify the best path forward.</p></div></div>
+  <div class="results-right" style="max-width:460px;width:100%;margin-bottom:10px"><div class="star-row">★★★★★</div><div class="marcus-name">Marcus Albright</div><div class="marcus-title">Senior Loan Officer · 30+ Years Experience<br>Atlanta, Georgia</div><div class="lender-badge"><span class="lender-num">240+</span>Wholesale lender connections to find competitive options based on your scenario</div><div class="marcus-exp">NMLS #1503465 · The Loan Factory · NMLS #320841</div></div>
+  <div class="cta-group"><a class="cta-phone" href="tel:4709435798">📞 Call Marcus — (470) 943-5798</a><a class="cta-outline" href="https://calendly.com/marcus-albright/30min" target="_blank">📅 Book a Free Consultation</a><a class="cta" href="https://www.loanfactory.com/marcusalbright/apply" target="_blank">🚀 Start My Application</a></div>
+</div>
+
+</div><!-- /screens -->
+
+<div class="ftr">
+  <strong>Marcus Albright · NMLS #1503465 · The Loan Factory · Company NMLS #320841 · Equal Housing Lender</strong><br>
+  Georgia License: Licensed by the Georgia Department of Banking and Finance · <a href="https://dbf.georgia.gov" target="_blank">dbf.georgia.gov</a> · Complaints: (770) 986-1633 · Not licensed in CT or NY · <a href="https://www.loanfactory.com/state_licenses" target="_blank">State Licenses</a><br>
+  <a href="https://www.loanfactory.com/privacy" target="_blank">Privacy Policy</a> · <a href="https://www.loanfactory.com/disclosure" target="_blank">Advertising Disclosures</a> · <a href="https://www.nmlsconsumeraccess.org/EntityDetails.aspx/INDIVIDUAL/1503465" target="_blank">NMLS Consumer Access</a><br>
+  Not a commitment to lend. Subject to lender approval. Based on standard federal and state guidelines. All loans subject to credit approval, income verification, and property appraisal.
+  Complies with: TILA · RESPA/TRID · ECOA · Fair Housing Act · MAP Rule · FCRA · GLBA · TCPA · Georgia Fair Lending Act (O.C.G.A. §7-6A) · Georgia Residential Mortgage Act (O.C.G.A. §7-1-1000).
+  We do not discriminate on the basis of race, color, religion, national origin, sex, disability, familial status, marital status, age, or receipt of public assistance.
+</div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════
+   MARCUS ALBRIGHT FUNNEL v6 — FULLY NULL-SAFE
+   All DOM access deferred to DOMContentLoaded.
+   All getElementById calls guarded.
+   No classList on null. Ever.
+═══════════════════════════════════════════ */
+
+var WEBHOOK = 'https://hooks.zapier.com/hooks/catch/27273306/ujzv8r4/';
+var urlParams = new URLSearchParams(window.location.search);
+var source = urlParams.get('src') || 'direct';
+
+var pData={}, rData={}, iData={};
+var currentPath='';
+var screenHistory=['s_entry'];
+var submittedPath='';
+
+var FAKE_NAMES=['test','asdf','admin','fake','xxx','name','user','null','undefined',
+  'qwerty','abcd','zxcv','aaa','bbb','ccc','foo','bar','baz','sample','example',
+  'john doe','jane doe','nobody','hello'];
+var FAKE_DOMAINS=['mailinator.com','guerrillamail.com','tempmail.com','throwam.com',
+  'yopmail.com','sharklasers.com','spam4.me','trashmail.com','dispostable.com',
+  'maildrop.cc','fakeinbox.com','trashmail.me'];
+
+var PRICES=['$50,000','$100,000','$150,000','$200,000','$250,000','$300,000',
+  '$350,000','$400,000','$500,000','$600,000','$750,000','$900,000',
+  '$1,100,000','$1,500,000','$2,000,000+'];
+var DP_LABELS=['0-3%','3-5%','5-10%','10-15%','15-20%','20-25%',
+  '25-30%','30-35%','35-40%','40%+'];
+
+var P_STEPS={p1:1,p2:2,p3:3,p4:4,p5:5,p6:6,p7:7,p_lead:8,s_confirm:9,res_purchase:10,res_review:10};
+var R_STEPS={r1:1,r2:2,r3:3,r_lead:4,s_confirm:5,res_refi:6,res_review:6};
+var I_STEPS={i1:1,i2:2,i3:3,i4:4,i_lead:5,s_confirm:6,res_invest:7,res_review:7};
+
+/* ── NULL-SAFE HELPERS ── */
+function g(id){ return document.getElementById(id)||null; }
+
+function go(id){
+  var screens = document.querySelectorAll('.scr');
+  for(var i=0;i<screens.length;i++) screens[i].classList.remove('on');
+  var target = g(id);
+  if(!target){ console.warn('Screen not found:',id); return; }
+  target.classList.add('on');
+  if(screenHistory[screenHistory.length-1]!==id) screenHistory.push(id);
+  var prog=g('prog'), bb=g('backBtn');
+  if(id==='s_entry'){
+    if(prog) prog.style.display='none';
+    if(bb) bb.style.display='none';
+    return;
+  }
+  if(prog) prog.style.display='block';
+  if(bb) bb.style.display=(screenHistory.length>1)?'flex':'none';
+  var stepMap = currentPath==='purchase'?P_STEPS:currentPath==='refi'?R_STEPS:I_STEPS;
+  var total   = currentPath==='purchase'?10:currentPath==='refi'?6:7;
+  var step    = stepMap[id]||1;
+  var pct     = Math.round((step/total)*100);
+  var pbar=g('pbar'); if(pbar) pbar.style.width=pct+'%';
+  var plbl=g('plbl'); if(plbl) plbl.textContent='Step '+step+' of '+total;
+  var ppct=g('ppct'); if(ppct) ppct.textContent=pct+'%';
+  try{ window.scrollTo(0,0); }catch(e){}
+}
+
+function goBack(){
+  if(screenHistory.length<=1){ go('s_entry'); return; }
+  screenHistory.pop();
+  go(screenHistory[screenHistory.length-1]||'s_entry');
+}
+
+function startPath(path){
+  currentPath=path; pData={}; rData={}; iData={};
+  screenHistory=['s_entry'];
+  if(path==='purchase') go('p1');
+  else if(path==='refi') go('r1');
+  else if(path==='invest') go('i1');
+}
+function pset(k,v){ pData[k]=v; }
+function rset(k,v){ rData[k]=v; }
+function iset(k,v){ iData[k]=v; }
+
+/* ── GOAL / DP / EXPERIENCE SELECTORS ── */
+function selGoal(activeId){
+  ['rg-lower','rg-cash','rg-short','rg-ns'].forEach(function(id){
+    var b=g(id); if(b) b.classList.remove('sel');
+  });
+  var a=g(activeId); if(a) a.classList.add('sel');
+}
+function selIdp(activeId){
+  ['idp-10','idp-15','idp-20','idp-30'].forEach(function(id){
+    var b=g(id); if(b) b.classList.remove('sel');
+  });
+  var a=g(activeId); if(a) a.classList.add('sel');
+}
+function selIexp(activeId){
+  ['iexp-none','iexp-12','iexp-35','iexp-5p'].forEach(function(id){
+    var b=g(id); if(b) b.classList.remove('sel');
+  });
+  var a=g(activeId); if(a) a.classList.add('sel');
+}
+
+/* ── SLIDERS ── */
+function updatePurchasePrice(v){
+  var label=PRICES[parseInt(v)]||'$250,000';
+  var el=g('p-price-val'); if(el) el.textContent=label;
+  pData.purchasePrice=label;
+}
+function updateDP(v){
+  var label=DP_LABELS[parseInt(v)]||'10-15%';
+  var el=g('p-dp-val'); if(el) el.textContent=label;
+  pData.downPayment=label;
+}
+function updateInvestDP(){
+  var priceEl=g('invest-price');
+  var price=priceEl?parseInt(priceEl.value.replace(/[^0-9]/g,''))||0:0;
+  var pct=iData.dpPct||0;
+  var box=g('dp-calc-box'), amtEl=g('dp-calc-amount'), subEl=g('dp-calc-sub');
+  if(price>0&&pct>0){
+    if(box) box.style.display='block';
+    var amt=Math.round(price*(pct/100));
+    if(amtEl) amtEl.textContent='$'+amt.toLocaleString();
+    if(subEl) subEl.textContent=pct+'% of $'+price.toLocaleString();
+    iData.dpAmount=amt;
+  } else {
+    if(box) box.style.display='none';
+  }
+}
+
+/* ── ADDRESS TOGGLE ── */
+function showAddr(yes){
+  var af=g('addr-field');
+  if(!af) return;
+  af.style.display=yes?'block':'none';
+  if(!yes) go('p_lead');
+}
+
+/* ══════════════════════════════════
+   VALIDATION — all null-guarded
+   ID convention:
+   Purchase: p-fn, p-ln, p-ph, p-em
+             p-fw-fn, p-fw-ln, p-fw-ph, p-fw-em  (wrappers)
+             p-chk, p-chk-warn
+   Refi:     r-fn ... r-fw-fn ... r-chk ...
+   Invest:   i-fn ... i-fw-fn ... i-chk ...
+══════════════════════════════════ */
+function valName(inputId, wrapId){
+  var inp=g(inputId); if(!inp) return false;
+  var wrap=g(wrapId);
+  var val=(inp.value||'').trim().toLowerCase();
+  var isFake=FAKE_NAMES.some(function(f){ return val===f; });
+  var valid=val.length>=2&&!isFake;
+  if(wrap){
+    if(!valid&&val.length>0){ wrap.classList.add('err'); wrap.classList.remove('vrf'); }
+    else if(valid){ wrap.classList.remove('err'); wrap.classList.add('vrf'); }
+    else{ wrap.classList.remove('err'); wrap.classList.remove('vrf'); }
+  }
+  return valid;
+}
+
+function fmtPhone(input, wrapId){
+  if(!input) return false;
+  var raw=input.value.replace(/\D/g,'').substr(0,10);
+  var fmt=raw;
+  if(raw.length>=6) fmt='('+raw.substr(0,3)+') '+raw.substr(3,3)+'-'+raw.substr(6);
+  else if(raw.length>=3) fmt='('+raw.substr(0,3)+') '+raw.substr(3);
+  input.value=fmt;
+  var valid=raw.length===10;
+  var wrap=g(wrapId);
+  if(wrap){
+    if(!valid&&raw.length>0){ wrap.classList.add('err'); wrap.classList.remove('vrf'); }
+    else if(valid){ wrap.classList.remove('err'); wrap.classList.add('vrf'); }
+    else{ wrap.classList.remove('err'); wrap.classList.remove('vrf'); }
+  }
+  return valid;
+}
+
+function valEmail(inputId, wrapId){
+  var inp=g(inputId); if(!inp) return false;
+  var val=(inp.value||'').trim().toLowerCase();
+  var wrap=g(wrapId);
+  var ok=/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val);
+  var domain=(val.split('@')[1]||'').toLowerCase();
+  var notDisp=!FAKE_DOMAINS.some(function(d){ return domain===d; });
+  var valid=ok&&notDisp&&val.length>5;
+  if(wrap){
+    if(!valid&&val.length>2){ wrap.classList.add('err'); wrap.classList.remove('vrf'); }
+    else if(valid){ wrap.classList.remove('err'); wrap.classList.add('vrf'); }
+    else{ wrap.classList.remove('err'); wrap.classList.remove('vrf'); }
+  }
+  return valid;
+}
+
+function hideWarn(id){
+  var w=g(id); if(w) w.style.display='none';
+}
+
+/* ── LEAD SUBMIT ──
+   ID map:
+   path p → prefix p  → p-fn, p-fw-fn, p-chk, p-chk-warn
+   path r → prefix r  → r-fn, r-fw-fn, r-chk, r-chk-warn
+   path i → prefix i  → i-fn, i-fw-fn, i-chk, i-chk-warn
+*/
+function submitLead(path){
+  var hp=g('hp-'+path);
+  if(hp&&hp.value!==''){console.warn('Bot detected');return;}
+  var pfx=path+'-';
+  var fnOk = valName(pfx+'fn',  pfx+'fw-fn');
+  var lnOk = valName(pfx+'ln',  pfx+'fw-ln');
+  var phEl = g(pfx+'ph');
+  var phOk = phEl ? fmtPhone(phEl, pfx+'fw-ph') : false;
+  var emOk = valEmail(pfx+'em', pfx+'fw-em');
+  var chk  = g(pfx+'chk');
+  if(chk&&!chk.checked){
+    var w=g(pfx+'chk-warn'); if(w) w.style.display='block';
+    return;
+  }
+  if(!fnOk||!lnOk||!phOk||!emOk){
+    var firstErr=document.querySelector('.iw.err input');
+    if(firstErr) try{ firstErr.scrollIntoView({behavior:'smooth',block:'center'}); }catch(e){}
+    return;
+  }
+  var fnVal = g(pfx+'fn'); var lnVal = g(pfx+'ln');
+  var phVal = g(pfx+'ph'); var emVal = g(pfx+'em');
+  var contact={
+    firstName: fnVal?(fnVal.value||'').trim():'',
+    lastName:  lnVal?(lnVal.value||'').trim():'',
+    phone:     phVal?(phVal.value||''):'',
+    email:     emVal?(emVal.value||'').trim():''
+  };
+  if(path==='p') Object.assign(pData,contact);
+  else if(path==='r') Object.assign(rData,contact);
+  else Object.assign(iData,contact);
+  submittedPath=path;
+  var data=path==='p'?pData:path==='r'?rData:iData;
+  var cp=g('confirm-phone'); if(cp) cp.textContent=data.phone||'—';
+  var ce=g('confirm-email'); if(ce) ce.textContent=data.email||'—';
+  var cb=g('confirm-badge');
+  if(cb) cb.textContent={p:'🏠 Purchase',r:'🔄 Refinance',i:'📈 Investment'}[path]||'';
+  go('s_confirm');
+}
+
+function goBackToLead(){
+  go({p:'p_lead',r:'r_lead',i:'i_lead'}[submittedPath]||'p_lead');
+}
+
+/* ── FINAL CONFIRM → RESULTS ── */
+function doFinalConfirm(){
+  var chk=g('final-chk');
+  if(!chk||!chk.checked){
+    var w=g('final-chk-warn'); if(w) w.style.display='block';
+    if(chk) try{chk.focus();}catch(e){}
+    return;
+  }
+  var path=submittedPath;
+  var data=path==='p'?pData:path==='r'?rData:iData;
+  var fname=data.firstName||'there';
+  sendWebhook(path,data);
+  var credit=data.credit||'r3';
+  var fullResults=(credit==='r3'||credit==='r4'||credit==='r5');
+  if(!fullResults){
+    var rb=g('review-badge');
+    if(rb) rb.textContent={p:'🏠 Purchase',r:'🔄 Refinance',i:'📈 Investment'}[path]||'';
+    var rn=g('res-rev-name'); if(rn) rn.textContent=fname;
+    go('res_review');
+    return;
+  }
+  var vet=(data.veteran===true);
+  var pVa=g('p-va-row'); if(pVa) pVa.style.display=vet?'block':'none';
+  var rVa=g('r-va-row'); if(rVa) rVa.style.display=vet?'block':'none';
+  if(path==='p'){
+    var rp=g('res-p-name'); if(rp) rp.textContent=fname;
+    go('res_purchase');
+  } else if(path==='r'){
+    var rr=g('res-r-name'); if(rr) rr.textContent=fname;
+    go('res_refi');
+  } else {
+    var ri=g('res-i-name'); if(ri) ri.textContent=fname;
+    go('res_invest');
+  }
+}
+
+/* ── WEBHOOK — flat JSON for Zapier ── */
+function sendWebhook(path,data){
+  var now = new Date().toISOString();
+
+  /* Resolve address from whichever path captured it */
+  var address = data.address || data.propAddress || '';
+
+  /* Resolve notes from invest path or empty */
+  var notes = data.investNotes || data.notes || '';
+
+  /* Resolve credit as human-readable range */
+  var creditMap = {r1:'500-580', r2:'580-640', r3:'640-680', r4:'680-720', r5:'720+'};
+  var credit = creditMap[data.credit] || data.credit || '';
+
+  /* Flat payload — exact keys Zapier expects */
+  var payload = {
+    first_name:     data.firstName     || '',
+    last_name:      data.lastName      || '',
+    phone:          data.phone         || '',
+    email:          data.email         || '',
+    path:           path               || '',
+    credit:         credit,
+    timeline:       data.timeline      || '',
+    purchase_price: data.purchasePrice || '',
+    down_payment:   data.downPayment   || '',
+    source:         source             || 'direct',
+    timestamp:      now,
+    address:        address,
+    notes:          notes
+  };
+
+  console.log('Lead submit started — path:', path, '| source:', source);
+  console.log('Lead payload:', JSON.stringify(payload, null, 2));
+
+  try {
+    var params = new URLSearchParams();
+    params.append('first_name',     payload.first_name     || '');
+    params.append('last_name',      payload.last_name      || '');
+    params.append('phone',          payload.phone          || '');
+    params.append('email',          payload.email          || '');
+    params.append('path',           payload.path           || '');
+    params.append('credit',         payload.credit         || '');
+    params.append('timeline',       payload.timeline       || '');
+    params.append('purchase_price', payload.purchase_price || '');
+    params.append('down_payment',   payload.down_payment   || '');
+    params.append('source',         payload.source         || '');
+    params.append('timestamp',      payload.timestamp      || '');
+    params.append('address',        payload.address        || '');
+    params.append('notes',          payload.notes          || '');
+    fetch(WEBHOOK, {
+      method: 'POST',
+      body:   params
+    })
+    .then(function(res){
+      console.log('Webhook success — status:', res.status);
+    })
+    .catch(function(e){
+      console.warn('Webhook fetch error:', e);
+    });
+  } catch(e) {
+    console.warn('Webhook exception:', e);
+  }
+}
+
+/* ── INIT — deferred to DOMContentLoaded ── */
+document.addEventListener('DOMContentLoaded', function(){
+  updatePurchasePrice(4);
+  updateDP(3);
+  var prog=g('prog'); if(prog) prog.style.display='none';
+  var bb=g('backBtn'); if(bb) bb.style.display='none';
+  console.log('%cFunnel v6 loaded — null-safe','color:#00b96b;font-weight:bold');
+  console.log('Source:',source);
+});
+
+</script>
+</body>
+</html>
